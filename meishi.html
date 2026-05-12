@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>名刺カード練習</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 素のCSSの名刺スタイル */
+    .card-plain {
+      background-color: #1e40af;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      width: 24rem;
+    }
+    .card-plain h1 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #991b1b;
+      margin: 0;
+    }
+    .card-plain .role {
+      color: #ef4444;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+    .card-plain hr {
+      margin: 1rem 0;
+      border-color: #e5e7eb;
+    }
+    .card-plain .info {
+      color: #d1d5db;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    /* 比較テーブル */
+    .compare-table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.85rem;
+    }
+    .compare-table th {
+      padding: 0.6rem 1rem;
+      text-align: left;
+      background-color: #1e293b;
+      color: #f1f5f9;
+    }
+    .compare-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid #334155;
+      vertical-align: top;
+    }
+    .compare-table tr:nth-child(even) td {
+      background-color: #1e293b;
+    }
+    .compare-table tr:nth-child(odd) td {
+      background-color: #0f172a;
+    }
+    .tag-tailwind {
+      display: inline-block;
+      background: #0ea5e9;
+      color: #fff;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    .tag-plain {
+      display: inline-block;
+      background: #6b7280;
+      color: #fff;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    code {
+      background: #334155;
+      color: #7dd3fc;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen p-8">
+
+  <!-- タイトル -->
+  <h1 class="text-center text-3xl font-bold mb-2 text-white">Tailwind CSS とは？</h1>
+  <p class="text-center text-gray-400 text-sm mb-10">名刺カードを使って学ぶ CSS フレームワーク入門</p>
+
+  <!-- Tailwind CSSの説明セクション -->
+  <div class="max-w-3xl mx-auto mb-14">
+
+    <!-- そもそもCSSとは -->
+    <div class="bg-slate-800 rounded-2xl p-6 mb-6">
+      <h2 class="text-lg font-bold text-white mb-3">🎨 そもそも CSS とは？</h2>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        CSS（Cascading Style Sheets）は、HTMLで作った文字や要素に
+        <span class="text-yellow-300 font-bold">「色・大きさ・余白・レイアウト」</span>などの見た目を付けるための言語です。<br>
+        CSSがないと、すべてのページが飾り気のない黒文字だけになります。
+      </p>
+      <div class="mt-4 bg-slate-900 rounded-xl p-4 font-mono text-xs text-gray-300 leading-relaxed">
+        <p class="text-green-400 mb-1">/* 素のCSS の例 */</p>
+        <p><span class="text-green-400">h1</span> {</p>
+        <p class="pl-4">font-size: <span class="text-yellow-300">2rem</span>; <span class="text-gray-500">/* 文字サイズ */</span></p>
+        <p class="pl-4">color: <span class="text-yellow-300">#991b1b</span>; <span class="text-gray-500">/* 文字色 */</span></p>
+        <p>}</p>
+      </div>
+    </div>
+
+    <!-- Tailwind CSSとは -->
+    <div class="bg-slate-800 rounded-2xl p-6 mb-6">
+      <h2 class="text-lg font-bold text-white mb-3">⚡ Tailwind CSS とは？</h2>
+      <p class="text-gray-300 text-sm leading-relaxed mb-3">
+        Tailwind CSS は <span class="text-sky-400 font-bold">「ユーティリティファースト」</span> という考え方の CSS フレームワークです。<br>
+        「背景を青に」「文字を大きく」「余白をつける」といった
+        <span class="text-yellow-300 font-bold">小さなクラスを HTML に直接組み合わせる</span>だけでデザインができます。
+      </p>
+      <div class="bg-slate-900 rounded-xl p-4 font-mono text-xs text-gray-300 leading-relaxed">
+        <p class="text-sky-400 mb-1">&lt;!-- Tailwind CSS の例 --&gt;</p>
+        <p>&lt;h1 <span class="text-yellow-300">class="text-3xl font-bold text-red-800"</span>&gt;</p>
+        <p class="pl-4">名嘉 健太</p>
+        <p>&lt;/h1&gt;</p>
+        <p class="mt-2 text-gray-500">
+          text-3xl   → font-size: 1.875rem<br>
+          font-bold  → font-weight: bold<br>
+          text-red-800 → color: #991b1b
+        </p>
+      </div>
+    </div>
+
+    <!-- どうやって使う？ -->
+    <div class="bg-slate-800 rounded-2xl p-6 mb-6">
+      <h2 class="text-lg font-bold text-white mb-3">🔧 どうやって使う？</h2>
+      <p class="text-gray-300 text-sm leading-relaxed mb-3">
+        最も簡単な方法は <span class="text-sky-400 font-bold">CDN（ネット経由）</span> で読み込むことです。<br>
+        以下の1行を <code>&lt;head&gt;</code> に書くだけで Tailwind の全クラスが使えます。
+      </p>
+      <div class="bg-slate-900 rounded-xl p-4 font-mono text-xs text-gray-300">
+        <p>&lt;script <span class="text-green-400">src</span>=<span class="text-yellow-300">"https://cdn.tailwindcss.com"</span>&gt;&lt;/script&gt;</p>
+      </div>
+    </div>
+
+    <!-- よく使うクラス一覧 -->
+    <div class="bg-slate-800 rounded-2xl p-6">
+      <h2 class="text-lg font-bold text-white mb-4">📋 よく使うクラス一覧</h2>
+      <div class="grid grid-cols-2 gap-3 text-sm">
+        <div class="bg-slate-900 rounded-xl p-3">
+          <p class="text-sky-400 font-bold mb-2">文字</p>
+          <p class="text-gray-300"><code>text-sm</code> 小さい文字</p>
+          <p class="text-gray-300 mt-1"><code>text-3xl</code> 大きい文字</p>
+          <p class="text-gray-300 mt-1"><code>font-bold</code> 太字</p>
+          <p class="text-gray-300 mt-1"><code>text-red-500</code> 赤い文字</p>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-3">
+          <p class="text-sky-400 font-bold mb-2">背景・枠</p>
+          <p class="text-gray-300"><code>bg-blue-800</code> 青い背景</p>
+          <p class="text-gray-300 mt-1"><code>rounded-2xl</code> 角丸</p>
+          <p class="text-gray-300 mt-1"><code>shadow-lg</code> 影</p>
+          <p class="text-gray-300 mt-1"><code>border</code> 枠線</p>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-3">
+          <p class="text-sky-400 font-bold mb-2">余白</p>
+          <p class="text-gray-300"><code>p-8</code> 内側の余白（padding）</p>
+          <p class="text-gray-300 mt-1"><code>mt-4</code> 上の外側余白（margin）</p>
+          <p class="text-gray-300 mt-1"><code>mb-2</code> 下の外側余白</p>
+          <p class="text-gray-300 mt-1"><code>gap-4</code> 要素間の隙間</p>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-3">
+          <p class="text-sky-400 font-bold mb-2">レイアウト</p>
+          <p class="text-gray-300"><code>flex</code> 横並びにする</p>
+          <p class="text-gray-300 mt-1"><code>justify-center</code> 中央揃え</p>
+          <p class="text-gray-300 mt-1"><code>w-96</code> 横幅を固定</p>
+          <p class="text-gray-300 mt-1"><code>min-h-screen</code> 画面の高さ以上</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 比較セクションの見出し -->
+  <h2 class="text-center text-2xl font-bold mb-2 text-white">名刺カード比較</h2>
+  <p class="text-center text-gray-400 text-sm mb-10">Tailwind CSS あり vs 素のCSS（Plain CSS）</p>
+
+  <!-- 名刺2枚並べ -->
+  <div class="flex flex-wrap justify-center gap-16 mb-14">
+
+    <!-- Tailwind CSS あり -->
+    <div>
+      <p class="text-center text-sky-400 font-bold mb-3 tracking-widest text-sm">▼ Tailwind CSS あり</p>
+      <div class="bg-blue-800 rounded-2xl shadow-lg p-8 w-96">
+        <h1 class="text-3xl font-bold text-red-800">名嘉 健太</h1>
+        <p class="text-red-500 font-medium mt-1">システムエンジニア</p>
+        <hr class="my-4 border-gray-200">
+        <p class="text-gray-300 text-sm">会社名：沖縄情報システム株式会社</p>
+        <p class="text-gray-300 text-sm mt-1">Email：nakaken.3051@gmail.com</p>
+        <p class="text-gray-300 text-sm mt-1">TEL：030-1111-9999</p>
+      </div>
+      <!-- Tailwindコード例 -->
+      <div class="mt-4 bg-slate-800 rounded-xl p-4 w-96 text-xs text-gray-300 font-mono leading-relaxed">
+        <p class="text-sky-400 font-bold mb-2">HTML（抜粋）</p>
+        <p>&lt;div <span class="text-yellow-300">class="bg-blue-800 rounded-2xl</span></p>
+        <p class="pl-4"><span class="text-yellow-300">shadow-lg p-8 w-96"</span>&gt;</p>
+        <p class="pl-2">&lt;h1 <span class="text-yellow-300">class="text-3xl font-bold</span></p>
+        <p class="pl-6"><span class="text-yellow-300">text-red-800"</span>&gt;名嘉 健太&lt;/h1&gt;</p>
+        <p>&lt;/div&gt;</p>
+      </div>
+    </div>
+
+    <!-- 素のCSS -->
+    <div>
+      <p class="text-center text-gray-400 font-bold mb-3 tracking-widest text-sm">▼ 素のCSS（Plain CSS）</p>
+      <div class="card-plain">
+        <h1>名嘉 健太</h1>
+        <p class="role">システムエンジニア</p>
+        <hr>
+        <p class="info">会社名：沖縄情報システム株式会社</p>
+        <p class="info">Email：nakaken.3051@gmail.com</p>
+        <p class="info">TEL：030-1111-9999</p>
+      </div>
+      <!-- 素のCSSコード例 -->
+      <div class="mt-4 bg-slate-800 rounded-xl p-4 w-96 text-xs text-gray-300 font-mono leading-relaxed">
+        <p class="text-gray-400 font-bold mb-2">CSS（抜粋）</p>
+        <p><span class="text-green-400">.card-plain</span> {</p>
+        <p class="pl-4">background-color: <span class="text-yellow-300">#1e40af</span>;</p>
+        <p class="pl-4">border-radius: <span class="text-yellow-300">1rem</span>;</p>
+        <p class="pl-4">padding: <span class="text-yellow-300">2rem</span>;</p>
+        <p>}</p>
+        <p class="mt-1"><span class="text-green-400">.card-plain h1</span> {</p>
+        <p class="pl-4">font-size: <span class="text-yellow-300">1.875rem</span>;</p>
+        <p class="pl-4">color: <span class="text-yellow-300">#991b1b</span>;</p>
+        <p>}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 違いの説明テーブル -->
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-xl font-bold mb-4 text-white text-center">2つの違い まとめ</h2>
+    <table class="compare-table rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th><span class="tag-tailwind">Tailwind</span> Tailwind CSS</th>
+          <th><span class="tag-plain">Plain</span> 素のCSS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>書き方</td>
+          <td>HTML の <code>class</code> に直接書く</td>
+          <td><code>&lt;style&gt;</code> や別ファイルに書く</td>
+        </tr>
+        <tr>
+          <td>スタイルの場所</td>
+          <td>HTMLとスタイルが一体（同じ行）</td>
+          <td>HTMLとCSSが分離している</td>
+        </tr>
+        <tr>
+          <td>クラス名の例</td>
+          <td><code>bg-blue-800</code> <code>text-3xl</code> <code>p-8</code></td>
+          <td><code>.card-plain</code> <code>.role</code> <code>.info</code></td>
+        </tr>
+        <tr>
+          <td>CSSファイルは必要？</td>
+          <td>不要（CDN 1行で使える）</td>
+          <td>必要（自分でCSSを書く）</td>
+        </tr>
+        <tr>
+          <td>カスタマイズのしやすさ</td>
+          <td>クラスを組み合わせるだけで素早く変更できる</td>
+          <td>CSSを直接編集するので細かく自由に設定できる</td>
+        </tr>
+        <tr>
+          <td>学習コスト</td>
+          <td>Tailwind 独自のクラス名を覚える必要がある</td>
+          <td>標準のCSSプロパティの知識だけで書ける</td>
+        </tr>
+        <tr>
+          <td>向いている場面</td>
+          <td>素早くUIを作りたいとき・チーム開発</td>
+          <td>細かいデザインを作り込みたいとき・学習目的</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
